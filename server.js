@@ -70,4 +70,8 @@ const server = http.createServer(async (req, res) => {
         res.writeHead(404, { 'Content-Type': 'text/html' });
         res.end('<h1>404 - Not Found</h1>');
     }
+
+    server.listen(3000, () => {
+        console.log('Server running on http:localhost:3000/');
+    });
 });
