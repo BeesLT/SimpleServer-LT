@@ -2,6 +2,7 @@ import http from 'http';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+const PORT = 3000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -52,7 +53,6 @@ const server = http.createServer(async (req, res) => {
             try {
                 const data = JSON.parse(body);
                 console.log('Received:', data);
-
                 res.writeHead(200, {
                     'Content-Type': 'application/json'
                 });
@@ -70,8 +70,8 @@ const server = http.createServer(async (req, res) => {
         res.writeHead(404, { 'Content-Type': 'text/html' });
         res.end('<h1>404 - Not Found</h1>');
     }
+});
 
-    server.listen(3000, () => {
-        console.log('Server running on http:localhost:3000/');
-    });
+server.listen(3000, () => {
+    console.log('Server running on http:localhost:3000/');
 });
